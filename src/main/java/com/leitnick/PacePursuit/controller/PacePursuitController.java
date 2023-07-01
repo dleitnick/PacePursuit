@@ -8,6 +8,7 @@ import com.leitnick.PacePursuit.service.StravaService;
 import com.leitnick.PacePursuit.view.BasicConsole;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -28,9 +29,10 @@ public class PacePursuitController {
         if(!strava.isApiTokenActive(apiKey)) {
             apiDao.updateApiKeyByName(strava.refreshApiToken());
         }
-        List<Run> runs = strava.listOfRuns();
-        runDao.addRunList(runs);
-        if (runs.size() > 0) System.out.println(runs.get(0));
+        List<Run> newRuns = strava.listOfRuns(runDao.getLastRun());
+//        List<Run> runs = strava.listOfRuns();
+        runDao.addRunList(newRuns);
+        if (newRuns.size() > 0) System.out.println(newRuns.get(0));
         else System.out.println("Empty list");
     }
 

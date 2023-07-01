@@ -7,4 +7,5 @@ import java.util.List;
 public interface RunDao {
 
     void addRunList(List<Run> runList);
+    Run getLastRun();
 }

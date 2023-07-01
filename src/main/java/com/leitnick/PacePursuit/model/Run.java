@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Arrays;
-import java.util.TimeZone;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Run {

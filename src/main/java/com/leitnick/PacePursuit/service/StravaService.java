@@ -37,12 +37,20 @@ public class StravaService {
     }
 
     public List<Run> listOfRuns() {
+        return listOfRuns(null);
+    }
+
+    public List<Run> listOfRuns(Run lastRun) {
         List<Run> runList = new ArrayList<>();
+        String runAfter = "";
+        if (lastRun != null) {
+            runAfter = "?after=" + lastRun.getStartDate().toInstant().getEpochSecond();
+        }
         HttpEntity<String> entity = makeEntityForGet();
         try {
             ResponseEntity<List<Run>> response =
                     restTemplate.exchange(
-                            API_BASE_URL + "/athletes/" + MY_ATHLETE_ID + "/activities",
+                            API_BASE_URL + "/athletes/" + MY_ATHLETE_ID + "/activities" + runAfter,
                             HttpMethod.GET, entity,
                             new ParameterizedTypeReference<List<Run>>() {});
             runList = response.getBody();
