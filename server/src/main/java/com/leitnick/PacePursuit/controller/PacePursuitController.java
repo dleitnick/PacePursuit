@@ -5,7 +5,6 @@ import com.leitnick.PacePursuit.dao.RunDao;
 import com.leitnick.PacePursuit.model.ApiKey;
 import com.leitnick.PacePursuit.model.Run;
 import com.leitnick.PacePursuit.service.StravaService;
-import com.leitnick.PacePursuit.view.BasicConsole;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;

@@ -1,19 +1,18 @@
-package com.leitnick.PacePursuit.controller;
+package com.leitnick.PacePursuit.view;
 
-import com.leitnick.PacePursuit.view.BasicConsole;
-import com.leitnick.PacePursuit.view.View;
 
-public class ViewController {
+public class View {
+
     private final BasicConsole console;
-    private final View view;
+    private final Menu menu = new Menu();
 
-    public ViewController(BasicConsole console) {
+    public View(BasicConsole console) {
         this.console = console;
-        view = new View(console);
     }
 
     public void run() {
         console.printBanner("Pace Pursuit: Run tracker\nTracking pace progress\nGathering statistics");
+        menu.getMainMenu();
         console.printHeader("Pull runs from Strava");
         console.printSubHeader("ChatGPT Opinion");
     }

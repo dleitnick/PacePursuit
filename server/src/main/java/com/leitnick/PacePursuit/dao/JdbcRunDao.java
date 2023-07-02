@@ -42,7 +42,7 @@ public class JdbcRunDao implements RunDao {
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         if (results.next()) {
             lastRun.setStartDate(results.getTimestamp("start_date"));
-        }
+        } else lastRun = null;
         return lastRun;
     }
 
