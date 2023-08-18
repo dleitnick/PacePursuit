@@ -34,6 +34,9 @@ public class StravaService {
 
     public StravaService(ApiKey apiKey) {
         this.apiKey = apiKey;
+        if(!isApiTokenActive(apiKey)) {
+            refreshApiToken();
+        }
     }
 
     public List<Run> listOfRuns() {
